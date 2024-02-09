@@ -1,5 +1,3 @@
-#New twilio details updated
-
 import pandas as pd
 import os
 from twilio.rest import Client
@@ -11,10 +9,10 @@ twilio_number = '+18884820408'
 client = Client(account_sid, auth_token)
 
 # Columns to monitor for changes
-columns_to_monitor = ['age', 'sex', 'on_thyroxine', 'query_on_thyroxine', 'on_antithyroid_meds', 
-                      'sick', 'pregnant', 'thyroid_surgery', 'I131_treatment', 'query_hypothyroid', 
-                      'query_hyperthyroid', 'lithium', 'goitre', 'tumor', 'hypopituitary', 'psych', 
-                      'TSH_measured', 'TSH', 'T3_measured', 'T3', 'TT4_measured', 'TT4', 
+columns_to_monitor = ['age', 'sex', 'on_thyroxine', 'query_on_thyroxine', 'on_antithyroid_meds',
+                      'sick', 'pregnant', 'thyroid_surgery', 'I131_treatment', 'query_hypothyroid',
+                      'query_hyperthyroid', 'lithium', 'goitre', 'tumor', 'hypopituitary', 'psych',
+                      'TSH_measured', 'TSH', 'T3_measured', 'T3', 'TT4_measured', 'TT4',
                       'T4U_measured', 'T4U', 'FTI_measured', 'FTI', 'TBG_measured', 'TBG']
 
 # Function to send a text message
@@ -23,7 +21,7 @@ def send_text_message(patient_id, mobile_number, changes):
     message_body = f"Hi {patient_id}, Your medical record has been updated:\n" + "\n".join(changes)
     try:
         message = client.messages.create(
-            to=formatted_number, 
+            to=formatted_number,
             from_=twilio_number,
             body=message_body
         )
